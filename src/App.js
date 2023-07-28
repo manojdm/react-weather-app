@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SearchComponent from "./Components/SearchComponent";
+import CityDetails from "./Components/WeatherDetails";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<div className="flex justify-center items-center flex-col w-screen h-screen text-lg	font-bold">
+				<h1>Weather App</h1>
+				<div className="max-w-sm rounded overflow-hidden shadow-lg h-96 w-96 p-8">
+					<Router>
+						<Routes>
+							<Route path="/" element={<SearchComponent />} />
+							<Route path="/city/:id" element={<CityDetails />} />
+						</Routes>
+					</Router>
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default App;
